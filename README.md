@@ -10,7 +10,7 @@ and updated on a frequent (monthly) basis. One of the data applications in Satla
 </p>
 
 We describe the many findings that led to the global super-resolution outputs in the paper, [Zooming Out on
-Zooming In: Advancing Super-Resolution for Remote Sensing](https://arxiv.org/pdf/2311.18082.pdf). Supplementary material is available [here](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/Zooming_Out_On_Zooming_In_Supplementary.pdf). 
+Zooming In: Advancing Super-Resolution for Remote Sensing](https://arxiv.org/pdf/2311.18082.pdf). Supplementary material is available [here](https://storage.googleapis.com/satlas-satellite-super-resolution/Zooming_Out_On_Zooming_In_Supplementary.pdf). 
 
 <p align="center">
    <img src="figures/teaser.svg" />
@@ -35,26 +35,26 @@ conda install gdal
 ### Data
 There are two training sets: 
 - The urban set (train_urban_set), with ~1.1 million pairs from locations within a 5km radius of cities in the USA with a 
-population >= 50k. There are 12 Sentinel-2 bands included in this set. Download links: [part1](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/train_urban_set.7z.001) [part2](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/train_urban_set.7z.002) [part3](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/train_urban_set.7z.003) [part4](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/train_urban_set.7z.004)
+population >= 50k. There are 12 Sentinel-2 bands included in this set. Download links: [part1](https://storage.googleapis.com/satlas-satellite-super-resolution/train_urban_set.7z.001) [part2](https://storage.googleapis.com/satlas-satellite-super-resolution/train_urban_set.7z.002) [part3](https://storage.googleapis.com/satlas-satellite-super-resolution/train_urban_set.7z.003) [part4](https://storage.googleapis.com/satlas-satellite-super-resolution/train_urban_set.7z.004)
 - The full set (train_full_set), consisting of ~44million pairs from all locations where NAIP imagery was available between 2019-2020. The full set, in the data format established prior
- to 2023-12-08, can be downloaded at this [link](https://pub-956f3eb0f5974f37b9228e0a62f449bf.r2.dev/satlas_explorer_datasets/super_resolution_train-full-set_2023-12-01.tar).
+ to 2023-12-08, can be downloaded at this [link](https://storage.googleapis.com/satlas-explorer-public/satlas_explorer_datasets/super_resolution_train-full-set_2023-12-01.tar).
 
 The urban set (termed S2-NAIP) was used for all experiments in the paper, because we found the full set to be overwhelmed with monotonous landscapes. 
 
 There are three val/test sets:
-- The validation set (val_set) consists of 8192 image pairs. There are 12 Sentinel-2 bands included in this set. ([download](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/super_resolution_val_set_2024-01-09.tar))
+- The validation set (val_set) consists of 8192 image pairs. There are 12 Sentinel-2 bands included in this set. ([download](https://storage.googleapis.com/satlas-satellite-super-resolution/super_resolution_val_set_2024-01-09.tar))
 - A small subset of this validation set (small_val_set) with 256 image pairs that are specifically from
-urban areas, which is useful for qualititive analysis and faster validation. ([download](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/super_resolution_small_val_set_2024-01-09.tar))
+urban areas, which is useful for qualititive analysis and faster validation. ([download](https://storage.googleapis.com/satlas-satellite-super-resolution/super_resolution_small_val_set_2024-01-09.tar))
 - A test set (test_set) containing eight 16x16 grids of Sentinel-2 tiles from interesting locations including
-Dry Tortugas National Park, Bolivia, France, South Africa, and Japan. ([download](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/super_resolution_test_set_2024-01-09.tar))
+Dry Tortugas National Park, Bolivia, France, South Africa, and Japan. ([download](https://storage.googleapis.com/satlas-satellite-super-resolution/super_resolution_test_set_2024-01-09.tar))
 
 Additional data includes:
-- A set of NAIP images from 2016-2018 corresponding to the train_urban_set and small_val_set NAIP images (old-naip). These are used as input to the discriminator for the model variant described in supplementary Section A.5.2. ([download](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/old_naip.tar))
-- JSON files containing tile weights for the train_urban_set and train_full_set (train_tile_weights). Using OpenStreetMap categories, we count the number of tiles where each category appears at least once and then weight tiles by the inverse frequency of the rarest category appearing in that tile. ([download](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/super_resolution_train_tile_weights.tar))
-- For train_urban_set, there is a JSON file with mappings between each NAIP chip and polygons of OpenStreetMap categories in that chip (osm_chips_to_masks.json). This is used for the object-discriminator variation described in supplementary Section A.5.1. ([download](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/osm_chips_to_masks.json))
-- RRDBNet weights from a model pretrained on SatlasPretrain. Used in experiment described in supplementary Section A.5.3. ([download](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/satlas_rrdbnet.pth))
+- A set of NAIP images from 2016-2018 corresponding to the train_urban_set and small_val_set NAIP images (old-naip). These are used as input to the discriminator for the model variant described in supplementary Section A.5.2. ([download](https://storage.googleapis.com/satlas-satellite-super-resolution/old_naip.tar))
+- JSON files containing tile weights for the train_urban_set and train_full_set (train_tile_weights). Using OpenStreetMap categories, we count the number of tiles where each category appears at least once and then weight tiles by the inverse frequency of the rarest category appearing in that tile. ([download](https://storage.googleapis.com/satlas-satellite-super-resolution/super_resolution_train_tile_weights.tar))
+- For train_urban_set, there is a JSON file with mappings between each NAIP chip and polygons of OpenStreetMap categories in that chip (osm_chips_to_masks.json). This is used for the object-discriminator variation described in supplementary Section A.5.1. ([download](https://storage.googleapis.com/satlas-satellite-super-resolution/osm_chips_to_masks.json))
+- RRDBNet weights from a model pretrained on SatlasPretrain. Used in experiment described in supplementary Section A.5.3. ([download](https://storage.googleapis.com/satlas-satellite-super-resolution/satlas_rrdbnet.pth))
 
-All of the above data (except for the full training set due to size) can be downloaded at this [link](https://pub-956f3eb0f5974f37b9228e0a62f449bf.r2.dev/satlas_explorer_datasets/super_resolution_2023-12-08.tar), or individual links are provided above for ease of downloading.
+All of the above data (except for the full training set due to size) can be downloaded at this [link](https://storage.googleapis.com/satlas-explorer-public/satlas_explorer_datasets/super_resolution_2023-12-08.tar), or individual links are provided above for ease of downloading.
 
 ##### HuggingFace
 The train_urban_set, split into many partitions, val_set, and test_set are available for [download on **HuggingFace**](https://huggingface.co/datasets/allenai/satlas-super-resolution/tree/main) as well.
@@ -66,22 +66,22 @@ Weights from models trained on the S2-NAIP dataset are listed below.
 Varying number of input Sentinel-2 images (just RGB bands):
 | Number Input Images | Weights | Config |
 | ------------ | ------------ | ------------ |
-| 1 | [1-S2-images](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/esrgan_1S2.pth) | [esrgan_baseline_1S2.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_1S2.yml) |
-| 2 | [2-S2-images](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/esrgan_2S2.pth) | [esrgan_baseline_2S2.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_2S2.yml) |
-| 4 | [4-S2-images](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/esrgan_4S2.pth) | [esrgan_baseline_4S2.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_4S2.yml) |
-| 8 | [8-S2-images](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/esrgan_8S2.pth) | [esrgan_baseline.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline.yml) |
-| 16 | [16-S2-images](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/esrgan_16S2.pth) | [esrgan_baseline_16S2.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_16S2.yml) |
+| 1 | [1-S2-images](https://storage.googleapis.com/satlas-satellite-super-resolution/esrgan_1S2.pth) | [esrgan_baseline_1S2.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_1S2.yml) |
+| 2 | [2-S2-images](https://storage.googleapis.com/satlas-satellite-super-resolution/esrgan_2S2.pth) | [esrgan_baseline_2S2.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_2S2.yml) |
+| 4 | [4-S2-images](https://storage.googleapis.com/satlas-satellite-super-resolution/esrgan_4S2.pth) | [esrgan_baseline_4S2.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_4S2.yml) |
+| 8 | [8-S2-images](https://storage.googleapis.com/satlas-satellite-super-resolution/esrgan_8S2.pth) | [esrgan_baseline.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline.yml) |
+| 16 | [16-S2-images](https://storage.googleapis.com/satlas-satellite-super-resolution/esrgan_16S2.pth) | [esrgan_baseline_16S2.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_16S2.yml) |
 
 Different Sentinel-2 bands used as input (8 input images):
 | Bands | Weights | Config |
 | ------------ | ------------ | ------------ |
-| 10m | [10m-S2-bands](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/esrgan_10m.pth) | [esrgan_baseline_10m.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_10m.yml) |
-| 20m | [20m-S2-bands](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/esrgan_20m.pth) | [esrgan_baseline_20m.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_20m.yml) |
-| 60m | [60m-S2-bands](https://pub-25c498004d1e4d4c8da69b2c05676836.r2.dev/esrgan_60m.pth) | [esrgan_baseline_60m.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_60m.yml) |
+| 10m | [10m-S2-bands](https://storage.googleapis.com/satlas-satellite-super-resolution/esrgan_10m.pth) | [esrgan_baseline_10m.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_10m.yml) |
+| 20m | [20m-S2-bands](https://storage.googleapis.com/satlas-satellite-super-resolution/esrgan_20m.pth) | [esrgan_baseline_20m.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_20m.yml) |
+| 60m | [60m-S2-bands](https://storage.googleapis.com/satlas-satellite-super-resolution/esrgan_60m.pth) | [esrgan_baseline_60m.yml](https://github.com/allenai/satlas-super-resolution/blob/experiments/ssr/options/experiments/esrgan_baseline_60m.yml) |
 
 #### SRCNN & HighResNet
-- [SRCNN](https://pub-956f3eb0f5974f37b9228e0a62f449bf.r2.dev/satlas_explorer_datasets/super_resolution_models/srcnn_s2naip.pth)
-- [HighResNet](https://pub-956f3eb0f5974f37b9228e0a62f449bf.r2.dev/satlas_explorer_datasets/super_resolution_models/highresnet_s2naip.pth)
+- [SRCNN](https://storage.googleapis.com/satlas-explorer-public/satlas_explorer_datasets/super_resolution_models/srcnn_s2naip.pth)
+- [HighResNet](https://storage.googleapis.com/satlas-explorer-public/satlas_explorer_datasets/super_resolution_models/highresnet_s2naip.pth)
 
 ## S2-NAIP Dataset Structure
 The dataset consists of image pairs from Sentinel-2 and NAIP satellites, where a pair is a time series of Sentinel-2 images 
