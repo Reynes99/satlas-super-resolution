@@ -1,0 +1,22 @@
+name: infer_1S2
+model_type: SSRESRGANModel
+scale: 4
+num_gpu: 0
+
+data_dir: C:/Users/ryanh/Documents/GitHub/satlas-super-resolution/inputs
+save_path: C:/Users/ryanh/Documents/GitHub/satlas-super-resolution/results_satlas
+
+n_lr_images: 1
+
+network_g:
+  type: SSR_RRDBNet
+  num_in_ch: 3
+  num_out_ch: 3
+  num_feat: 64
+  num_block: 23
+  num_grow_ch: 32
+
+path:
+  pretrain_network_g: C:/Users/ryanh/Documents/GitHub/satlas-super-resolution/ssr/esrgan_1S2.pth
+  param_key_g: params_ema
+  strict_load_g: true
