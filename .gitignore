@@ -161,3 +161,6 @@ cython_debug/
 
 #Model_weights
 *.pth
+
+#Results
+results_satlas
