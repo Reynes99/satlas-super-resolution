@@ -3,7 +3,7 @@ model_type: SSRESRGANModel
 scale: 4
 num_gpu: 0
 
-data_dir: C:/Users/ryanh/Documents/GitHub/satlas-super-resolution/inputs_jp2
+data_dir: C:/Users/ryanh/Documents/GitHub/satlas-super-resolution/inputs_fixed
 save_path: C:/Users/ryanh/Documents/GitHub/satlas-super-resolution/results_satlas
 
 n_lr_images: 1
