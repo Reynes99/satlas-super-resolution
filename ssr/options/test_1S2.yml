@@ -1,0 +1,66 @@
+name: test_1S2
+model_type: SRModel
+scale: 4
+num_gpu: 0
+
+# -------------------------
+# DATASET
+# -------------------------
+test_datasets:
+  test_1:
+    name: custom_test
+    type: S2NAIPDataset   # 🔥 jouw custom dataset
+
+    dataroot_lq: inputs_jp2
+    dataroot_gt: ground_truth
+
+    phase: test
+    scale: 4
+
+# -------------------------
+# MODEL
+# -------------------------
+network_g:
+  type: SSR_RRDBNet
+  num_in_ch: 3
+  num_out_ch: 3
+  num_feat: 64
+  num_block: 23
+  num_grow_ch: 32
+
+# -------------------------
+# PATHS (VOLLEDIG)
+# -------------------------
+path:
+  pretrain_network_g: C:/Users/ryanh/Documents/GitHub/satlas-super-resolution/ssr/esrgan_1S2.pth
+  param_key_g: params_ema
+  strict_load_g: true
+
+  results_root: results
+  log: results/log
+  visualization: results/vis
+
+# -------------------------
+# TEST SETTINGS
+# -------------------------
+test:
+  save_img: true
+
+# -------------------------
+# VALIDATION (GEEN ERRORS MEER)
+# -------------------------
+val:
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
+
+  suffix: ''
+  save_img: true
+  pbar: true

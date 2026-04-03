@@ -1,0 +1,53 @@
+name: finetune_1S2
+model_type: SRModel
+scale: 4
+num_gpu: 0
+
+datasets:
+  train:
+    name: custom_train
+    type: S2NAIPDataset
+
+    dataroot_lq: inputs_jp2
+    dataroot_gt: ground_truth
+
+    phase: train
+    scale: 4
+
+    use_shuffle: true
+    batch_size_per_gpu: 4
+    num_worker_per_gpu: 0
+
+network_g:
+  type: SSR_RRDBNet
+  num_in_ch: 3
+  num_out_ch: 3
+  num_feat: 64
+  num_block: 23
+  num_grow_ch: 32
+
+train:
+  optim_g:
+    type: Adam
+    lr: 0.0001
+
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1.0
+  
+  scheduler:
+    type: MultiStepLR
+    milestones: [1000, 1500]
+    gamma: 0.5
+
+  total_iter: 2000
+  warmup_iter: 0
+
+path:
+  pretrain_network_g: ssr/esrgan_1S2.pth
+  strict_load_g: true
+
+  experiments_root: experiments
+  models: experiments/models
+  training_states: experiments/states
+  log: experiments/log
