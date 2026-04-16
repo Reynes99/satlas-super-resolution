@@ -166,3 +166,4 @@ cython_debug/
 results_satlas
 results/
 results_archived/
+comparisons/
